@@ -495,13 +495,13 @@ class DirectView(View):
         serialize.use_dill()
         return self.apply(serialize.use_dill)
 
-    def use_cloudpickle(self):
+    def use_cloudpickle(self, protocol=4):
         """Expand serialization support with cloudpickle.
         
         This calls ipyparallel.serialize.use_cloudpickle() here and on each engine.
         """
-        serialize.use_cloudpickle()
-        return self.apply(serialize.use_cloudpickle)
+        serialize.use_cloudpickle(protocol)
+        return self.apply(serialize.use_cloudpickle, protocol)
 
     def use_pickle(self):
         """Restore
